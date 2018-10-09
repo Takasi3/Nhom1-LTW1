@@ -2,6 +2,7 @@
 class db{
 	// tao bien ket noi
 	public static $conn;
+
 	// viet ham ket noi
 	public function __construct(){
 		self::$conn =  new mysqli(DB_HOST , DB_USER , DB_PASS,DB_NAME);
@@ -23,13 +24,46 @@ class db{
 		return $arr;
 	}
 
-	 	// Ham lay ra tat ca san pham
-	 public function getAllProducts(){
+
+
+	// Ham lay ra tat ca san pham khong phan trang
+	public function getAllProducts2(){
+
+	 	// stt trang bat dau
+	 	
 	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC";
 	 	// thuc thi cau truy van
 	 	$result = self::$conn -> query($sql);
 	 	return $this ->getData($result);
 	 }
+	
+
+
+
+
+
+	 	// Ham lay ra tat ca san pham co phan trang
+	 public function getAllProducts($page,$per_page){
+
+	 	// stt trang bat dau
+	 	$first_link=($page-1)*$per_page;
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC LIMIT $first_link,$per_page";
+	 	// thuc thi cau truy van
+	 	$result = self::$conn -> query($sql);
+	 	return $this ->getData($result);
+	 }
+
+	 // Ham Phan Trang 1,2,3....
+	  public function paginate($url,$total,$page,$per_page)
+	  {
+	  	$total_links = ceil($total/$per_page);
+	  	$link="";
+	  	for($i =1 ; $i <= $total_links;$i++)
+	  	{
+	  		$link = $link."<a href='$url?page=$i'>$i  </a>";
+	  	}
+	  	return $link;
+	  }
 	  	// Ham lay hang~ san pham
 	 public function getManuProducts(){
 	 	$sql ="SELECT * FROM `manufactures`";
@@ -66,12 +100,18 @@ class db{
 	 	return $result;
 	 }
 	 	 	    	// Ham tim san pham = id
-	 public function SearchByID($id){
-	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE (protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID) AND (description LIKE N'%$id %' OR name LIKE N'%$id%') ORDER BY ID DESC";
+	 public function SearchByID($id,$page,$per_page){
+	 	$first_link=($page-1)*$per_page;
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE (protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID) AND (description LIKE N'%$id %' OR name LIKE N'%$id%') ORDER BY ID DESC LIMIT $first_link,$per_page";
 	 	// thuc thi cau truy van
 	 	$result = self::$conn -> query($sql);
 	 	return $this ->getData($result);
 	 }
+
+	
+
+
+
 
 
 

@@ -66,7 +66,7 @@
 
 <!--start-top-serch-->
 <div id="search">
-	<form action="result.html" method="get">
+	<form action="result.php" method="get">
 	<input type="text" placeholder="Search here..." name="key"/>
 	<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </form>
@@ -119,8 +119,19 @@
 							require "config.php";
 							require "db.php";
 							$db = new db;
+							$per_page = 10;
+								if(isset($_GET['page']))
+								{
+	 								$page = $_GET['page'];
+	 							}
+	 							else
+	 							{
+	 								$page = 1;
+	 							}
+	 							$total = 25;
+	 							$url = $_SERVER['PHP_SELF'];
 							$id = $_GET['key'];
-							$SearchByID = $db->SearchByID($id);
+							$SearchByID = $db->SearchByID($id,$page,$per_page);
 
 							foreach($SearchByID as $value){
 							?>
@@ -143,9 +154,8 @@
 						</tbody>
 						</table>
 						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
+								<li class="active"><?php echo $db->paginate($url,$total,$page,$per_page); ?></li>
+							
 						</ul>
 						
 					</div>
