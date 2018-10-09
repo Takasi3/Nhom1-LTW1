@@ -165,7 +165,7 @@ else{
 						</tbody>
 						</table>
 						<ul class="pagination">
-							<li class="active"><?php echo $db->paginate($url,$total,$page,$per_page); ?></li>
+							<?php echo $db->paginate($url,$total,$page,$per_page); ?>
 						
 						</ul>
 						

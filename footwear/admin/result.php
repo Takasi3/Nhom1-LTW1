@@ -119,6 +119,11 @@
 							require "config.php";
 							require "db.php";
 							$db = new db;
+							$id = $_GET['key'];
+							$SearchByID2 = $db->SearchByID2($id);
+							$total = $SearchByID2->num_rows;
+
+
 							$per_page = 10;
 								if(isset($_GET['page']))
 								{
@@ -128,9 +133,9 @@
 	 							{
 	 								$page = 1;
 	 							}
-	 							$total = 25;
+	 							
 	 							$url = $_SERVER['PHP_SELF'];
-							$id = $_GET['key'];
+							
 							$SearchByID = $db->SearchByID($id,$page,$per_page);
 
 							foreach($SearchByID as $value){
@@ -154,7 +159,7 @@
 						</tbody>
 						</table>
 						<ul class="pagination">
-								<li class="active"><?php echo $db->paginate($url,$total,$page,$per_page); ?></li>
+								<?php echo $db->paginate($url,$total,$page,$per_page); ?>
 							
 						</ul>
 						
