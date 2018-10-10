@@ -1,5 +1,8 @@
 
 <?php
+require "config.php";
+require "db.php";
+$db = new db;
 session_start();
 if(isset($_SESSION['user'])){
 }
@@ -87,7 +90,7 @@ else{
 	<ul>
 		<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 
-		<li> <a href="form.html"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
+		<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 		<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
 		<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protypes</span></a></li>
 
@@ -124,9 +127,7 @@ else{
 							</thead>
 							<tbody>
 							<?php
-							require "config.php";
-							require "db.php";
-							$db = new db;
+							
 							 $getAllproducts2 = $db->getAllproducts2();
 								
 							 	$total = $getAllproducts2->num_rows;

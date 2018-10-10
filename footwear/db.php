@@ -2,6 +2,7 @@
 class db{
 	// tao bien ket noi
 	public static $conn;
+
 	// viet ham ket noi
 	public function __construct(){
 		self::$conn =  new mysqli(DB_HOST , DB_USER , DB_PASS,DB_NAME);
@@ -22,27 +23,119 @@ class db{
 		}
 		return $arr;
 	}
-	// Ham lay ra ten san pham
-	 public function getProducts(){
-	 	$sql ="SELECT * FROM `products` WHERE ID > ((SELECT MAX(ID) FROM products)-4)";
+
+
+
+	// Ham lay ra tat ca san pham khong phan trang
+	public function getAllProducts2(){
+
+	 	// stt trang bat dau
+	 	
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC";
+	 		return  self::$conn -> query($sql);
+	 }
+	
+
+
+
+
+
+	 	// Ham lay ra tat ca san pham co phan trang
+	 public function getAllProducts($page,$per_page){
+
+	 	// stt trang bat dau
+	 	$first_link=($page-1)*$per_page;
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC LIMIT $first_link,$per_page";
 	 	// thuc thi cau truy van
 	 	$result = self::$conn -> query($sql);
 	 	return $this ->getData($result);
 	 }
-	 	// Ham lay ra tat ca san pham
-	 public function getAllProducts(){
-	 	$sql ="SELECT * FROM `products`";
+
+	 // Ham Phan Trang 1,2,3..next , last
+	  public function paginate($url,$total,$page,$per_page)
+	  {
+	  	if($total <= 0) {
+				     return "";
+				     }
+				     $total_links = ceil($total/$per_page);
+				     if($total_links <= 1) {
+				     return "";
+				     }
+	  	$link="";$first_link = "";  $last_link="";  
+
+				if ($page > 1) { 
+				    
+				$first_link = "<a href='$url'> First    </a></li>"; 
+				} 
+	  	for($i =1 ; $i <= $total_links;$i++)
+	  	{
+	  		$link = $link."<a href='$url?page=$i'>$i  </a>";
+	  	}
+	  	if($page < $total_links) { 
+				   
+				 
+				$last_link = "<a href='$url?page=$total_links'> Last</a>";     
+				}
+	  	return $first_link.$link.$last_link;
+	  }
+
+	  
+
+	  	// Ham lay hang~ san pham
+	 public function getManuProducts(){
+	 	$sql ="SELECT * FROM `manufactures`";
 	 	// thuc thi cau truy van
 	 	$result = self::$conn -> query($sql);
 	 	return $this ->getData($result);
 	 }
-	  	// Ham lay ra thong tin san pham = id
-	 public function getProductsByID($id){
-	 	$sql ="SELECT * FROM `products` WHERE ID = $id";
+  	// Ham lay Loai san pham
+	 public function getTypeProducts(){
+	 	$sql ="SELECT * FROM `protypes`";
 	 	// thuc thi cau truy van
 	 	$result = self::$conn -> query($sql);
 	 	return $this ->getData($result);
 	 }
+	   	// Ham Xoa san pham = id
+	 public function DeleteByID($id){
+	 	$sql ="DELETE FROM `products` WHERE ID = $id";
+	 	// thuc thi cau truy van
+	 	$result = self::$conn -> query($sql);
+	 	return $result;
+	 }
+	    	// Ham Xoa hang~ = id
+	 public function DeleteManuByID($id){
+	 	$sql ="DELETE FROM `manufactures` WHERE manu_ID = $id";
+	 	// thuc thi cau truy van
+	 	$result = self::$conn -> query($sql);
+	 	return $result;
+	 }
+	 	    	// Ham Xoa Nhan~ Hieu = id
+	 public function DeleteTypeByID($id){
+	 	$sql ="DELETE FROM `protypes` WHERE type_ID = $id";
+	 	// thuc thi cau truy van
+	 	$result = self::$conn -> query($sql);
+	 	return $result;
+	 }
+	 	 	    	// Ham tim san pham = id co phan trang
+	 public function SearchByID($id,$page,$per_page){
+	 	$first_link=($page-1)*$per_page;
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE (protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID) AND (description LIKE N'%$id %' OR name LIKE N'%$id%') ORDER BY ID DESC LIMIT $first_link,$per_page";
+	 	// thuc thi cau truy van
+	 	$result = self::$conn -> query($sql);
+	 	return $this ->getData($result);
+	 }
+	     	// Ham tim san pham = id khong phan trang
+	 public function SearchByID2($id){
+	 	$sql ="SELECT * FROM `protypes` ,`products`,`manufactures` WHERE (protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID) AND (description LIKE N'%$id %' OR name LIKE N'%$id%') ORDER BY ID DESC";
+	 	// thuc thi cau truy van
+	 	return self::$conn -> query($sql);
+	 }
+
+
+
+	
+
+
 
 
 

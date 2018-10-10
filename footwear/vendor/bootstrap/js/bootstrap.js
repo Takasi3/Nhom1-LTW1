@@ -3644,188 +3644,15 @@ var Popover = function ($) {
   /**
    * ------------------------------------------------------------------------
    * Constants
-   * ------------------------------------------------------------------------
-   */
-
-  var NAME = 'popover';
-  var VERSION = '4.0.0-beta';
-  var DATA_KEY = 'bs.popover';
-  var EVENT_KEY = '.' + DATA_KEY;
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var CLASS_PREFIX = 'bs-popover';
-  var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
-
-  var Default = $.extend({}, Tooltip.Default, {
-    placement: 'right',
-    trigger: 'click',
-    content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
-  });
-
-  var DefaultType = $.extend({}, Tooltip.DefaultType, {
-    content: '(string|element|function)'
-  });
-
-  var ClassName = {
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-
-  var Selector = {
-    TITLE: '.popover-header',
-    CONTENT: '.popover-body'
-  };
-
-  var Event = {
-    HIDE: 'hide' + EVENT_KEY,
-    HIDDEN: 'hidden' + EVENT_KEY,
-    SHOW: 'show' + EVENT_KEY,
-    SHOWN: 'shown' + EVENT_KEY,
-    INSERTED: 'inserted' + EVENT_KEY,
-    CLICK: 'click' + EVENT_KEY,
-    FOCUSIN: 'focusin' + EVENT_KEY,
-    FOCUSOUT: 'focusout' + EVENT_KEY,
-    MOUSEENTER: 'mouseenter' + EVENT_KEY,
-    MOUSELEAVE: 'mouseleave' + EVENT_KEY
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-  var Popover = function (_Tooltip) {
-    _inherits(Popover, _Tooltip);
-
-    function Popover() {
-      _classCallCheck(this, Popover);
-
-      return _possibleConstructorReturn(this, _Tooltip.apply(this, arguments));
-    }
-
-    // overrides
-
-    Popover.prototype.isWithContent = function isWithContent() {
-      return this.getTitle() || this._getContent();
-    };
-
-    Popover.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
-    };
-
-    Popover.prototype.getTipElement = function getTipElement() {
-      return this.tip = this.tip || $(this.config.template)[0];
-    };
-
-    Popover.prototype.setContent = function setContent() {
-      var $tip = $(this.getTipElement());
-
-      // we use append for html objects to maintain js events
-      this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
-      this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
-
-      $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
-    };
-
-    // private
-
-    Popover.prototype._getContent = function _getContent() {
-      return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
-    };
-
-    Popover.prototype._cleanTipClass = function _cleanTipClass() {
-      var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''));
-      }
-    };
-
-    // static
-
-    Popover._jQueryInterface = function _jQueryInterface(config) {
-      return this.each(function () {
-        var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
-
-        if (!data && /destroy|hide/.test(config)) {
-          return;
-        }
-
-        if (!data) {
-          data = new Popover(this, _config);
-          $(this).data(DATA_KEY, data);
-        }
-
-        if (typeof config === 'string') {
-          if (data[config] === undefined) {
-            throw new Error('No method named "' + config + '"');
-          }
-          data[config]();
-        }
-      });
-    };
-
-    _createClass(Popover, null, [{
-      key: 'VERSION',
-
-
-      // getters
-
-      get: function get() {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function get() {
-        return Default;
-      }
-    }, {
-      key: 'NAME',
-      get: function get() {
-        return NAME;
-      }
-    }, {
-      key: 'DATA_KEY',
-      get: function get() {
-        return DATA_KEY;
-      }
-    }, {
-      key: 'Event',
-      get: function get() {
-        return Event;
-      }
-    }, {
-      key: 'EVENT_KEY',
-      get: function get() {
-        return EVENT_KEY;
-      }
-    }, {
-      key: 'DefaultType',
-      get: function get() {
-        return DefaultType;
-      }
-    }]);
-
-    return Popover;
-  }(Tooltip);
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME] = Popover._jQueryInterface;
-  $.fn[NAME].Constructor = Popover;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return Popover._jQueryInterface;
-  };
-
-  return Popover;
-}(jQuery);
-
-
-})();
+   * ------‰p‰p‰p‰x_‰pÇ à" ^‹å]Ã3À^‹å]ÃÌÌÌÌÌÌÌÌÌÌÌÌU‹ìSVW‹}jWÿœƒjW‹Ø3öÿœƒ‹M‰p‰pV‰ph ˆ
+‰p‰pWU‰R‰ÿHƒ‹Ej,Vj,W‰CÿœƒPè´¥÷ÿƒÄ_‰p^‰Ç@€Z
+Ç@ Z
+[]ÃÌÌÌÌÌÌÌU‹ìS3ÀV…ÿtF‹ñI …öt5‹M‹Ö¤$    Š:u„ÛtŠY:ZuƒÁƒÂ„Ûuä3ÉëÉƒÙÿ…Ét@ƒÆ;Çr¿ƒÈÿ^[]ÃÌÌÌÌÌÌÌÌU‹ìƒì0¡ 3Å‰Eü‹E‹MV‹uPQUĞRÿÌ‚‹EĞ‹MÔ‹UØP‹EÜQ‹MàR‹UäP‹EèQBRl  PhŒVÿƒ‹MüƒÄ$3Í^è8¶õÿ‹å]ÃÌÌÌÌÌÌÌÌÌÌU‹ìƒì@¡ 3Å‰EüSV‹u¶W‹}ƒè03Û3É‰}È‹Öƒø	wI ‰BH¶ƒè0ƒø	vî‰Mè€:-B…Õ   ‹Ğ¶ ƒè03Éƒø	w‰BH¶ƒè0ƒø	vî‰Mä€:-B…¥   ‹Ğ¶ ƒè03Éƒø	w‰BH¶ƒè0ƒø	vî‰Mà€:TB‰EÌuvUÌRPè&İ ‰EÜ‹EÌŠ@ƒÄ‰EÌ€ù:uXUÌRPèİ ‰EØ‹EÌŠ@ƒÄ‰EÌ€ù:u:UÌRPèêÜ ‰EÔ‹EÌŠ@ƒÄ‰EÌ€ù.uUÌRPèÌÜ ‰EĞ‹EÌƒÄ€8Z„  MøQUôREğPMĞQUÔREØPMÜQUèREÄPMàQUÀRh°Vÿ4‚ƒÄ4ƒø…Ë   mèl  ÿMğ‹5Ø‚3ÿd$ ;ót5‹ÎEÀ¤$    Š:u:ÓtŠP:QuƒÀƒÁ:Óuä3ÀëÀƒØÿ;ÃtGGƒÆƒÿr¾ƒÈÿ‹5Ğ‚‰Eì3ÿ;ót9‹ÎEÄ¤$    Š:u:ÓtŠP:QuƒÀƒÁ:Óuä3Àë	‹ÇëÁÀƒØÿ;ÃtGƒÆƒÿrº‹MÈƒÈÿ‰EäEĞPQë7‹MÈ‹Ç‰EäEĞPQë(Sh ˆ
+SEÈPëAmèl  ÿMäMĞQ‰]ì‰]ğ‰]ô‰]øWÿƒ…Àu_^[‹Mü3Íè¶³õÿ‹å]ÃSh ˆ
+SUÈRÿHƒ‹}È;ûuÿ¼jW3öÿœƒ‹Mü‰p‰p‰p‰x_‰X^3ÍÇ Kè [èg³õÿ‹å]ÃÌÌÌÌÌÌÌÌÌU‹ìƒäøìŒ   ¡ 3Ä‰„$ˆ   ‹E‹MSV‹uWPQT$R‰t$ÿƒ…Àt3À_^[‹Œ$ˆ   3Ìè³õÿ‹å]ÃjPVÿœƒ‹t$<‹ø‹Æ™‹È3Ê+Ê¸‰ˆˆˆ÷éÑÁú‹ÂÁèÂ™¹<   ÷ù‹L$¸Å³¢‘R÷îÖÁú‹ÂÁèÂ‹T$ P‹D$(Q‹L$0R‹T$8P‹D$@QBRl  PhôjPWÿ$ƒƒÄ,ƒøPƒ•   L$Qh¾P   +ğVT$8RD$PPÿÔ‚…Àui9D$tc‹L$QT$DRD$Pè¥RÿÿƒÄ…Àt$Æ ‹HQÿdƒ‹Ç_^[‹Œ$ˆ   3Ìè²õÿ‹å]Ã‹T$VRSÿx„‹Ç_^[‹Œ$ˆ   3Ìèô±õÿ‹å]ÃÆ ‹Œ$”   ‹Ç_^[3ÌèÚ±õÿ‹å]ÃÌÌÌÌÌÌÌÌÌÌÌÌj j èg¶  ƒÄÃÌÌÌU‹ì‹M3À…Ét9u‹I…Ét‹I@…Éuø]ÃƒÈÿ]ÃÌÌÌÌÌÌÌÌÌÌU‹ìV‹u…ötlƒ> tg‹M‹ÁWx¤$    Š@„Òuù+Ç_9FuH‹vƒør‹;u:ƒèƒÁƒÆƒøsì…Àt Š:u"ƒøvŠQ:VuƒøvŠA:Fu¸   ^]Ã3À^]ÃÌÌÌÌU‹ì‹ES‹¤ƒVW‹}jPWÿÓ3É‹ğ9Mt‹F;Át9t‹NQPWÿÓ‰Fë‰N‰N‹F…Àt‹UWRPè¯ÿÿÿƒÄ‰F‹F…Àt‹MWQPè—ÿÿÿƒÄ‰F_‹Æ^[]ÃÌÌÌÌÌÌÌÌÌÌU‹ì‹EVjP3öÿœƒ‰0‰p‰p‰p‰p^]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌU‹ì‹EVjP3öÿœƒ‹M‹U‰p‰pÇ    ‰H‰P^]ÃÌÌÌU‹ì‹EVjP3öÿœƒ‹M‰p‰p‰pÇ    ‰Hq›    ŠA„Òuù+Î‰H^]ÃÌ‹P…ÒtNƒúdsIV‹p¶ƒ<…°úu4¸   ;Ğv$ë¤$    ¶‹°úƒùtƒùt@;Âræ¸   ^Ã3À^Ã3ÀÃÌÌÌÌÌÌÌÌU‹ì‹Eƒ8 t‹@ƒødsƒÀ]ÃƒÀ]ÃV‹pW¿   …ötëI VèÊÿÿÿ‹vƒÄ|…öuì‹Ç_^]ÃÌÌÌÌÌÌU‹ìSV‹ñ‹Ş;ñsQ¶ƒ<•°úuDI F;ñs¶‹…°úƒøtƒøuç‹MWjQ3ÿÿœƒ‰x‰x+ó_‰p^‰XÇ    []Ã^3À[]ÃÌÌÌÌÌÌÌÌÌU‹ìƒìV‹ñW<;÷ƒª   €>(…¡   ¸   S‰uøğÇEü    ]ü;÷së¤$    ¶9°úuğ;÷rî[_3À^‹å]Ã;÷só€>)t/‹UR‹Ç+ÆPVèM  ƒÄ…ÀtØÇ@    ‰‹ppX¸   ë ‹MjQ3ÿÿœƒ‹Mø‹Uü‰x+ñ[F‰8_‰p‰H‰P^‹å]Ã_3À^‹å]ÃÌÌÌÌÌÌÌÌÌ3É…Àt<9u8‹P‹Â…Àt‹@A…Àuø…Éx#öÁu‹Â…Àt›    ƒ8 t‹@…Àuô¸   Ã3ÀÃÌÌÌÌÌÌÌÌÌÌÌU‹ìQ¸ÍÌÌÌ÷áÁê’À+ÈV3À3ö‰Mü…ÿt-Š€ù0|!€ù9¾Éƒé0;Âw&u;MüwF€A;÷r×…öu ‹UÇ    3À^‹å]Ã‹MÇ    3À^‹å]Ã‹Mó‰1^‹å]ÃÌÌÌÌÌÌU‹ìV‹u…ötƒ> t h@hu  h j ÿP1ƒÄÿ¼‹F…Àu	‹E‰F^]Ãƒx t	‹@ƒx u÷‹M‰H^]ÃÌÌÌÌÌÌÌÌU‹ìV‹uƒ> t h(hW  h j ÿP1ƒÄÿ¼‹N‹E‰H‰F^]ÃÌÌÌÌÌU‹ìQS‹ÙV4‹ÎW+ËUüR‹ùèÅşÿÿ‹ø‹EüƒÄ…ÀtB;Æs>¶ƒ<°úu1X;Öw'‹EjP3öÿœƒ‰p‰p‰x_^‰XÇ    [‹å]Ã_^3À[‹å]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌÌU‹ì‹E…Àu]Ã‹MŠ€ú(u‹URè!ıÿÿƒÄ]Ã¶Òƒ<•°ú‹URu
+è–üÿÿƒÄ]Ãè<ÿÿÿƒÄ]ÃÌÌÌÌÌÌÌU‹ì‹E…Àu]Ã‹MŠ€ú(u‹URèÑüÿÿƒÄ]Ã¶Òƒ<•°ú‹URu
+èFüÿÿƒÄ]ÃèìşÿÿƒÄ]ÃÌÌÌÌÌÌÌ3É…ÀtS9uO‹P‹Â…Àt‹@A…Àuø…Éx:öÁu5‹ÂV…Àt#ëI ƒ8 t ‹p…öt‹Æè-ıÿÿ…Àt‹F…Àuâ¸   ^Ã3À^Ã3ÀÃÌÌÌÌU‹ì‹EVWjP3öÿœƒ‰0‰p‰p‰p‹ø‰p‹EÇ   ‰GPŠ@„Éuù‹u+Â‰Gƒ> t h(hW  h j ÿP1ƒÄÿ¼‹N‰O‰~_^]ÃÌÌÌÌÌÌÌÌÌÌÌÌÌU‹ìƒäøVW‹}jWÿœƒ‹M‹ğ‹E…À|…ÉrPQVë÷ÙƒĞ ÷ØPQFÆ-PèPĞ ‹MƒÄWQVè2ÿÿÿƒÄ_^‹å]ÃÌÌÌÌÌÌÌÌÌ…Éu¹#‹ÁQPhØ
+j hq è‚Q ƒÄÃ¸ëâÌÌÌÌÌÌÌU‹ìƒì$‹EVWjP3öÿœƒ‰0‰p‰p‰p‹ø‰p‹E‰}ô;Æ„Q  ‰uø9pE  Së‹Á‹H‹Uø‹E‹<‘jP‰}Ü3öÿœƒ‹U‰0‰p‰p‰p‰p‹OQR‹Øÿpƒ‰Eü…À„  ë	›    ‹EüMğQUäRMàQPÿ¸„‹Eğ‹P‹M‹ jQ‰Uè‰Eì3öÿœƒ‹Uì‰0‰p‰p‰p‰p‹ø‹EèÇ   ‰W‰G93th(hW  h VÿP1ƒÄÿ¼‹K‰O‹M‹Uä‹EàjQ‰{‰Uì‰Eè3öÿœƒ‹Uè‰0‰p‰p‰p‰p‹ø‹EìÇ   ‰W‰G93th(hW  h VÿP1ƒÄÿ¼‹K‹Uü‰OR‰{ÿlƒ‰Eü…À…ÿÿÿ‹}Ü‹‹MPQÿ¸ƒ‹UjR‹ø3öÿœƒ‰0‰p‰p‰p‹È‰p‹Ç‰MÜÇ   ‰yp‹ÿŠ@„Òuù+Æ‹uô‰A…ötƒ> t#h@hu  h j ÿP1ƒÄÿ¼‹MÜ‹F…Àu‰Nëƒx tI ‹@ƒx u÷‰Hƒ> t h@hu  h j ÿP1ƒÄÿ¼‹F…Àu‰^ëƒx t	‹@ƒx u÷‰X‹Eø‹M@‰Eø;AŒÁıÿÿ‹ş[‹Çèüÿÿ…Àu#h€hhØ
+Phq èÆN ƒÄ_^‹å]Ã‹U‰:_3À^‹å]ÃU‹ìƒìSVW‹}jW3öÿœƒ‰0‰p‰p‰p‹Ø‰p‹E…À„  PWÿpƒ‰E…À„ÿ   ë‹}‹EMüQUğRMìQPÿ¸„‹Eü‹P‹ jW‰Uô‰Eø3öÿœƒ‹Mø‹Uô‰0‰p‰p‰p‹ø‰pÇ   ‰O‰W93th(hW  h VÿP1ƒÄÿ¼‹C‰G‹E‹Mğ‹UìjP‰{‰Mø‰Uô3öÿœƒ‹Mô‹Uø‰0‰p‰p‰p‹ø‰pÇ   ‰O‰W93th(hW  h VÿP1ƒÄÿ¼‹C‹M‰GQ‰{ÿlƒ‰E…À…ÿÿÿ3É…Ût@9u<‹S‹Â…Àt‹@A…Àuø…Éx'öÁu"‹Â…Àt‹ÿƒ8 t‹@…Àuô‹U_^‰3À[‹å]ÃhlhhØ
+j hq èM ƒÄ_^[‹å]ÃÌU‹ì‹EÇ     ‹E3ÉV…Àt9u{‹p‹Æ…Àt‹@A…Àuø…ÉxföÁua‹Æ…Àt›    ƒ8 tP‹@…Àuô…ö„£   S‹°W‹}‹ÇPŠ@„Éuù‹N+Â;ÈuQ‹NQWÿÓƒÄ…Àt2‹V‹r…öuÒ_[3À^]ÃhlhhØ
+j hq èPL ƒÄ^]Ã‹F‹p‹U‹@N	QR‰Eÿœƒ‹ø_‰‰w…öt‹EVPSè3“÷ÿƒÄ‹MÆ3 ‰9_[3À^]ÃÌÌ

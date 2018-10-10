@@ -74,7 +74,7 @@ class db{
 	  	if($page < $total_links) { 
 				   
 				 
-				$last_link = "<li><a href='url?page=$total_links'> Last</a></li>";     
+				$last_link = "<li><a href='$url?page=$total_links'> Last</a></li>";     
 				}
 	  	return $first_link.$link.$last_link;
 	  }
@@ -130,6 +130,19 @@ class db{
 	 	// thuc thi cau truy van
 	 	return self::$conn -> query($sql);
 	 }
+	 public function AddProducts($name , $price ,$image,$description,$manu_ID,$type_ID){
+	 	$sql="INSERT INTO `products`(`name`, `price`, `image`, `description`, `manu_ID`, `type_ID`) VALUES ($name,$price,$image,$description,$manu_ID,$type_ID)";
+	 	var_dump($sql);
+	 	return self::$conn -> query($sql);
+	 }
+	 public function getNameProtypes()
+	 {
+	 	$sql ="SELECT *FROM `protypes`";
+	 	$result = self::$conn -> query($sql);
+	 	return $this ->getData($result);
+
+	 }
+
 
 
 
