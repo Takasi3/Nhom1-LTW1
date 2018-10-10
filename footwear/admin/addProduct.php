@@ -41,8 +41,7 @@ require "config.php";
 	$db = new db;
 	$image = $_FILES["fileUpload"]["name"];
 	echo $image;
-	$AddProducts = $db -> AddProducts($name , $Price ,$image,$Dessciption,$manu_id,$type_id);
-	var_dump($AddProducts);
+	$db -> AddProducts($name , $Price ,$image,$Dessciption,$manu_id,$type_id);
 	//header("location:index.php");
 	
 
