@@ -51,6 +51,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			});
 		</script>
 		<!----//End-top-nav-script---->
+		<!----//CSS PHAN TRANG---->
+
 	</head>
 	<body>
 		<!----container---->
@@ -242,7 +244,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="col-md-3 special-products-grid text-center">
 							<a class="brand-name" href="single-page.html"><img src='images\manufactures\<?php echo $value['manu_img'] ?>' style="width:80px;height:40px;  title="name" /></a>
 							<a class="product-here" href="single-page.html"><img src='images\products\<?php echo $value['image'] ?>' title="product-name" /></a>
-							<h4><a href="single-page.html"><?php echo $value['type_name'] ?></a></h4>
+							<h4><a href="single-page.html"><?php echo $value['name'] ?></a></h4>
 							<a class="product-btn" href="single-page.html"><span> <?php echo $value['price'] ?>$</span><small>GET NOW</small><label> </label></a>
 						</div>
 						 <?php } ?>
@@ -253,6 +255,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<!---//speical-products---->
 				</div>
+				     <div class="pagination">
+                    <?php echo $db->paginate($url,$total,$page,$per_page); ?>
+                </div>
 			<!----content---->
 			<!----footer--->
 			<div class="footer">
