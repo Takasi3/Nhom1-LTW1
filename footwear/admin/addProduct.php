@@ -57,12 +57,12 @@ if ($uploadOk == 0) {
     }
 }
 
-if ($uploadOk != 0) {
+if ($uploadOk != 0 || $uploadOk = 0) {
     ?>
 <html>
 <head>
-<META http-equiv="refresh" content="5;URL=index.php">
+<META http-equiv="refresh" content="2;URL=index.php">
 </head>
 </html>
-<?php } ?>
+<?php }?>
 

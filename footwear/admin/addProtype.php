@@ -3,7 +3,7 @@ if (isset($_POST['type_name'])) {
 } else {
     header("location:form_protype.php");
 }
-$name        = $_POST['type_name'];
+$name = $_POST['type_name'];
 
 $target_dir    = "public/images/protypes/";
 $target_file   = $target_dir . basename($_FILES["fileUpload"]["name"]);
@@ -52,4 +52,12 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+if ($uploadOk != 0 || $uploadOk = 0) {
+    ?>
+<html>
+<head>
+<META http-equiv="refresh" content="2;URL=index.php">
+</head>
+</html>
+<?php }?>
 

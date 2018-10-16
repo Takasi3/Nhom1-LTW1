@@ -30,7 +30,23 @@ class db
     // ham lay ra thong tin san pham = id
     public function getProductsByID($id)
     {
-        $sql = "SELECT * FROM `products` WHERE id = $id";
+        $sql = "SELECT * FROM `products` WHERE ID = $id";
+        // thuc thi cau truy van
+        $result = self::$conn->query($sql);
+        return $this->getData($result);
+    }
+    // ham lay manu = id
+    public function getManuByID($id)
+    {
+        $sql = "SELECT * FROM `manufactures` WHERE manu_ID = $id";
+        // thuc thi cau truy van
+        $result = self::$conn->query($sql);
+        return $this->getData($result);
+    }
+    // ham lay ra protypes= id
+    public function getProtypesByID($id)
+    {
+        $sql = "SELECT * FROM `protypes` WHERE type_ID = $id";
         // thuc thi cau truy van
         $result = self::$conn->query($sql);
         return $this->getData($result);
@@ -172,6 +188,12 @@ class db
     public function updateProducts($name, $price, $image, $description, $manu_ID, $type_ID, $id)
     {
         $sql = "UPDATE `products` SET `name`='$name',`price`=$price,`image`='$image',`description`='$description',`manu_ID`=$manu_ID,`type_ID`=$type_ID WHERE ID = $id";
+        return self::$conn->query($sql);
+    }
+    //ham sua san pham khong hinh anh
+    public function updateNoIMG($name, $price, $description, $manu_ID, $type_ID, $id)
+    {
+        $sql = "UPDATE `products` SET `name`='$name',`price`=$price,`description`='$description',`manu_ID`=$manu_ID,`type_ID`=$type_ID WHERE ID = $id";
         return self::$conn->query($sql);
     }
 
