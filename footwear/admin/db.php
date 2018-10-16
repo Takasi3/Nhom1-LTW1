@@ -27,6 +27,14 @@ class db
         }
         return $arr;
     }
+    // ham lay ra thong tin san pham = id
+    public function getProductsByID($id)
+    {
+        $sql = "SELECT * FROM `products` WHERE id = $id";
+         // thuc thi cau truy van
+        $result = self::$conn->query($sql);
+        return $this->getData($result);
+    }
 
     // Ham lay ra tat ca san pham khong phan trang
     public function getAllProducts2()
@@ -37,6 +45,7 @@ class db
         $sql = "SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC";
         return self::$conn->query($sql);
     }
+
 
     // Ham lay ra tat ca san pham co phan trang
     public function getAllProducts($page, $per_page)

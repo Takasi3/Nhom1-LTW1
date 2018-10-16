@@ -156,7 +156,7 @@ else{
 								<td><?php echo $value['description'] ?></td>
 								<td><?php echo $value['price'] ?></td>
 								<td>
-									<a href="form.html" class="btn btn-success btn-mini">Edit</a>
+									<a href="capnhat.php?id=<?php echo $value['ID'] ?>" class="btn btn-success btn-mini">Edit</a>
 									<a href="del.php?id=<?php echo $value['ID'] ?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
