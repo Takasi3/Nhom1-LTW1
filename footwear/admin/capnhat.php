@@ -14,16 +14,7 @@
 	<link href="public/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
-	<?php
-							require "config.php";
-							require "db.php";
-							$db = new db;
-							if(isset($_GET['id']))
-							{
-								$id =$_GET['id'];
-								$getProductsByID = $db->getProductsByID($id);
-							}
-							?>
+
 <body>
 
 	<!--Header-part-->
@@ -99,6 +90,16 @@
 							<h5>Product Detail</h5>
 						</div>
 						<div class="widget-content nopadding">
+							<?php
+require "config.php";
+require "db.php";
+$db = new db;
+if(isset($_GET['id']))
+{
+	$id =$_GET['id'];
+	$getProductsByID = $db->getProductsByID($id);
+}
+?>
 
 							<!-- BEGIN USER FORM -->
 							<form action="addProduct.php" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -106,19 +107,16 @@
 									<label class="control-label">Name :</label>
 									<div class="controls">
 										<!--- Nhap value san pham qua ID -->
-										<input type="text" class="span11" placeholder="Product name" name="name" /> *
+										<input type="text" class="span11" placeholder="Product name" name="name" value = "<?php echo $getProductsByID['0']['name'] ?>" /> *
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Choose a product type :</label>
 									<div class="controls">
 										<select name="type_id">
-											<?php
-											require "config.php";
-											require "db.php";
-											$db = new db;
+									<?php
+											
 //$_FILES['nameInputFile']['properties'];
-
 											$getNameProtypes = $db->getNameProtypes();
 											foreach ($getNameProtypes as $value) {
 
@@ -161,7 +159,7 @@
 										</div>
 
 										<div class="form-actions">
-											<button type="submit" class="btn btn-success" >Add</button>
+											<button type="submit" class="btn btn-success" >Update</button>
 										</div>
 									</div>
 

@@ -59,9 +59,10 @@ if ($uploadOk == 0) {
 
 if ($uploadOk != 0) {
     ?>
-	<html>
+<html>
 <head>
 <META http-equiv="refresh" content="5;URL=index.php">
 </head>
 </html>
+<?php } ?>
 
