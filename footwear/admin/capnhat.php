@@ -91,15 +91,17 @@
 						</div>
 						<div class="widget-content nopadding">
 							<?php
-require "config.php";
-require "db.php";
-$db = new db;
-if(isset($_GET['id']))
-{
-	$id =$_GET['id'];
-	$getProductsByID = $db->getProductsByID($id);
-}
-?>
+							require "config.php";
+							require "db.php";
+							$db = new db;
+							if(isset($_GET['id']))
+							{
+								$id =$_GET['id'];
+								$getProductsByID = $db->getProductsByID($id);
+								$protypeID =  $getProductsByID['0']['type_ID'];
+								$manuID = $getProductsByID['0']['manu_ID'];
+							}
+							?>
 
 							<!-- BEGIN USER FORM -->
 							<form action="addProduct.php" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -114,15 +116,17 @@ if(isset($_GET['id']))
 									<label class="control-label">Choose a product type :</label>
 									<div class="controls">
 										<select name="type_id">
-									<?php
+											<?php
 											
 //$_FILES['nameInputFile']['properties'];
 											$getNameProtypes = $db->getNameProtypes();
 											foreach ($getNameProtypes as $value) {
-
+												if( $value['type_ID'] == $protypeID){
 												?>
-												<option value="<?php echo $value['type_ID'] ?>"><?php echo $value['type_name'] ?></option>
-											<?php }?>
+												<option value="<?php echo $value['type_ID']; ?>" selected> <?php echo $value['type_name'] ?></option>
+											<?php } else { ?>
+												<option value="<?php echo $value['type_ID']; ?>"> <?php echo $value['type_name'] ?></option>
+											<?php } } ?>
 
 										</select>
 									</div>
@@ -134,9 +138,12 @@ if(isset($_GET['id']))
 											<?php $getManuProducts = $db->getManuProducts();
 											foreach ($getManuProducts as $value) {
 
+													if( $value['manu_ID'] == $manuID){
 												?>
+												<option value="<?php echo $value['manu_ID'] ?> "selected><?php echo $value['manu_name'] ?></option>
+											<?php } else { ?>
 												<option value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
-											<?php }?>
+											<?php } }?>
 										</select> *
 									</div>
 									<div class="control-group">

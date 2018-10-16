@@ -151,9 +151,23 @@ class db
     }
     public function getNameProtypes()
     {
-        $sql    = "SELECT *FROM `protypes`";
+        $sql    = "SELECT * FROM `protypes`";
         $result = self::$conn->query($sql);
         return $this->getData($result);
+
+    }
+      //add manufactures
+    public function addManu($name,$image){
+        $sql = "INSERT INTO `manufactures`(`manu_name`, `manu_img`) VALUES ('$name','$image')";
+        var_dump($sql);
+        return self::$conn->query($sql);
+
+    }
+    //add protype
+    public function addProtype($name,$image){
+        $sql = "INSERT INTO `protypes`(`type_name`, `type_img`) VALUES ('$name','$image')";
+        var_dump($sql);
+        return self::$conn->query($sql);
 
     }
 

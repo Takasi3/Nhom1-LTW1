@@ -103,15 +103,15 @@
 									<div class="controls">
 										<select name="type_id">
 											<?php
-require "config.php";
-require "db.php";
-$db = new db;
+											require "config.php";
+											require "db.php";
+											$db = new db;
 //$_FILES['nameInputFile']['properties'];
 
-$getNameProtypes = $db->getNameProtypes();
-foreach ($getNameProtypes as $value) {
+											$getNameProtypes = $db->getNameProtypes();
+											foreach ($getNameProtypes as $value) {
 
-    ?>
+												?>
 												<option value="<?php echo $value['type_ID'] ?>"><?php echo $value['type_name'] ?></option>
 											<?php }?>
 
@@ -123,9 +123,9 @@ foreach ($getNameProtypes as $value) {
 									<div class="controls">
 										<select name="manu_id">
 											<?php $getManuProducts = $db->getManuProducts();
-foreach ($getManuProducts as $value) {
+											foreach ($getManuProducts as $value) {
 
-    ?>
+												?>
 												<option value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
 											<?php }?>
 										</select> *
