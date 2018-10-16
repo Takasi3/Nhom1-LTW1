@@ -63,18 +63,18 @@
 	<!--sidebar-menu-->
 
 	<div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
-	<ul>
-		<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+		<ul>
+			<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 
-		<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
-		<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
-		<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protypes</span></a></li>
-		<li> <a href="form_manufacture.php"><i class="icon icon-th-list"></i> <span>Add New Manufactures</span></a></li>
-		<li> <a href="form_protype.php"><i class="icon icon-th-list"></i> <span>Add New Protypes</span></a></li>
+			<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
+			<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
+			<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protypes</span></a></li>
+			<li> <a href="form_manufacture.php"><i class="icon icon-th-list"></i> <span>Add New Manufactures</span></a></li>
+			<li> <a href="form_protype.php"><i class="icon icon-th-list"></i> <span>Add New Protypes</span></a></li>
 
 
 
-	</ul>
+		</ul>
 	</div>
 
 	<!-- BEGIN CONTENT -->
@@ -93,20 +93,19 @@
 						</div>
 						<div class="widget-content nopadding">
 							<?php
-							require "config.php";
-							require "db.php";
-							$db = new db;
-							if(isset($_GET['id']))
-							{
-								$id =$_GET['id'];
-								$getProductsByID = $db->getProductsByID($id);
-								$protypeID =  $getProductsByID['0']['type_ID'];
-								$manuID = $getProductsByID['0']['manu_ID'];
-							}
-							?>
+require "config.php";
+require "db.php";
+$db = new db;
+if (isset($_GET['id'])) {
+    $id              = $_GET['id'];
+    $getProductsByID = $db->getProductsByID($id);
+    $protypeID       = $getProductsByID['0']['type_ID'];
+    $manuID          = $getProductsByID['0']['manu_ID'];
+}
+?>
 
 							<!-- BEGIN USER FORM -->
-							<form action="addProduct.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+							<form action="updateProduct.php?id= <?php echo $id ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
 								<div class="control-group">
 									<label class="control-label">Name :</label>
 									<div class="controls">
@@ -119,84 +118,84 @@
 									<div class="controls">
 										<select name="type_id">
 											<?php
-											
+
 //$_FILES['nameInputFile']['properties'];
-											$getNameProtypes = $db->getNameProtypes();
-											foreach ($getNameProtypes as $value) {
-												if( $value['type_ID'] == $protypeID){
-												?>
-												<option value="<?php echo $value['type_ID']; ?>" selected> <?php echo $value['type_name'] ?></option>
-											<?php } else { ?>
-												<option value="<?php echo $value['type_ID']; ?>"> <?php echo $value['type_name'] ?></option>
-											<?php } } ?>
+$getNameProtypes = $db->getNameProtypes();
+foreach ($getNameProtypes as $value) {
+    if ($value['type_ID'] == $protypeID) {
+        ?>
+													<option value="<?php echo $value['type_ID']; ?>" selected> <?php echo $value['type_name'] ?></option>
+												<?php } else {?>
+													<option value="<?php echo $value['type_ID']; ?>"> <?php echo $value['type_name'] ?></option>
+												<?php }}?>
 
-										</select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label">Choose a manufacture :</label>
-									<div class="controls">
-										<select name="manu_id">
-											<?php $getManuProducts = $db->getManuProducts();
-											foreach ($getManuProducts as $value) {
-
-													if( $value['manu_ID'] == $manuID){
-												?>
-												<option value="<?php echo $value['manu_ID'] ?> "selected><?php echo $value['manu_name'] ?></option>
-											<?php } else { ?>
-												<option value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
-											<?php } }?>
-										</select> *
-									</div>
-									<div class="control-group">
-										<label class="control-label">Choose an image :</label>
-										<div class="controls">
-											<input type="file" name="fileUpload" id="fileUpload">
+											</select>
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label"  >Description</label>
+										<label class="control-label">Choose a manufacture :</label>
 										<div class="controls">
-											<textarea class="span11" placeholder="Description" name =Des "description"></textarea>
-										</div>
-										<div class="control-group">
-											<label class="control-label">Price :</label>
-											<div class="controls">
-												<input type="text" class="span11" placeholder="price" name =Pri "price" /> *
+											<select name="manu_id">
+												<?php $getManuProducts = $db->getManuProducts();
+foreach ($getManuProducts as $value) {
+
+    if ($value['manu_ID'] == $manuID) {
+        ?>
+														<option value="<?php echo $value['manu_ID'] ?> "selected><?php echo $value['manu_name'] ?></option>
+													<?php } else {?>
+														<option value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
+													<?php }}?>
+												</select> *
+											</div>
+											<div class="control-group">
+												<label class="control-label">Choose an image :</label>
+												<div class="controls">
+													<input type="file" name="fileUpload" id="fileUpload">
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label"  >Description</label>
+												<div class="controls">
+													<textarea class="span11" placeholder="Description" name =Des "description"><?php echo $getProductsByID['0']['description']; ?></textarea>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Price :</label>
+													<div class="controls">
+														<input type="text" class="span11" placeholder="price" name =Pri "price" value="<?php echo $getProductsByID['0']['price']; ?>" /> *
+													</div>
+
+												</div>
+
+												<div class="form-actions">
+													<button type="submit" class="btn btn-success" >Update</button>
+												</div>
 											</div>
 
-										</div>
+										</form>
+										<!-- END USER FORM -->
 
-										<div class="form-actions">
-											<button type="submit" class="btn btn-success" >Update</button>
-										</div>
+
 									</div>
-
-								</form>
-								<!-- END USER FORM -->
-
-
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<!-- END CONTENT -->
+				<!-- END CONTENT -->
 
-		<!--Footer-part-->
-		<div class="row-fluid">
-			<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
-		</div>
-		<!--end-Footer-part-->
-		<script src="public/js/jquery.min.js"></script>
-		<script src="public/js/jquery.ui.custom.js"></script>
-		<script src="public/js/bootstrap.min.js"></script>
-		<script src="public/js/jquery.uniform.js"></script>
-		<script src="public/js/select2.min.js"></script>
-		<script src="public/js/jquery.dataTables.min.js"></script>
-		<script src="public/js/matrix.js"></script>
-		<script src="public/js/matrix.tables.js"></script>
-	</body>
-	</html>
+				<!--Footer-part-->
+				<div class="row-fluid">
+					<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
+				</div>
+				<!--end-Footer-part-->
+				<script src="public/js/jquery.min.js"></script>
+				<script src="public/js/jquery.ui.custom.js"></script>
+				<script src="public/js/bootstrap.min.js"></script>
+				<script src="public/js/jquery.uniform.js"></script>
+				<script src="public/js/select2.min.js"></script>
+				<script src="public/js/jquery.dataTables.min.js"></script>
+				<script src="public/js/matrix.js"></script>
+				<script src="public/js/matrix.tables.js"></script>
+			</body>
+			</html>

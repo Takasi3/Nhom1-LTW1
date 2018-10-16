@@ -31,7 +31,7 @@ class db
     public function getProductsByID($id)
     {
         $sql = "SELECT * FROM `products` WHERE id = $id";
-         // thuc thi cau truy van
+        // thuc thi cau truy van
         $result = self::$conn->query($sql);
         return $this->getData($result);
     }
@@ -45,7 +45,6 @@ class db
         $sql = "SELECT * FROM `protypes` ,`products`,`manufactures` WHERE protypes.type_ID = products.type_ID AND manufactures.manu_ID = products.manu_ID ORDER BY ID DESC";
         return self::$conn->query($sql);
     }
-
 
     // Ham lay ra tat ca san pham co phan trang
     public function getAllProducts($page, $per_page)
@@ -146,7 +145,6 @@ class db
     public function AddProducts($name, $price, $image, $description, $manu_ID, $type_ID)
     {
         $sql = "INSERT INTO `products`(`name`, `price`, `image`, `description`, `manu_ID`, `type_ID`) VALUES ('$name',$price,'$image','$description',$manu_ID,$type_ID)";
-        var_dump($sql);
         return self::$conn->query($sql);
     }
     public function getNameProtypes()
@@ -156,19 +154,25 @@ class db
         return $this->getData($result);
 
     }
-      //add manufactures
-    public function addManu($name,$image){
+    //add manufactures
+    public function addManu($name, $image)
+    {
         $sql = "INSERT INTO `manufactures`(`manu_name`, `manu_img`) VALUES ('$name','$image')";
-        var_dump($sql);
         return self::$conn->query($sql);
 
     }
     //add protype
-    public function addProtype($name,$image){
+    public function addProtype($name, $image)
+    {
         $sql = "INSERT INTO `protypes`(`type_name`, `type_img`) VALUES ('$name','$image')";
-        var_dump($sql);
         return self::$conn->query($sql);
 
+    }
+    //ham sua san pham co hinh anh
+    public function updateProducts($name, $price, $image, $description, $manu_ID, $type_ID, $id)
+    {
+        $sql = "UPDATE `products` SET `name`='$name',`price`=$price,`image`='$image',`description`='$description',`manu_ID`=$manu_ID,`type_ID`=$type_ID WHERE ID = $id";
+        return self::$conn->query($sql);
     }
 
 }
