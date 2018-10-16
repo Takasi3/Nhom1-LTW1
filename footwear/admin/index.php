@@ -42,7 +42,7 @@ else{
 
 <!--Header-part-->
 <div id="header">
-	<h1><a href="dashboard.html">Dashboard</a></h1>
+	<h1><a href="dashboard.php">Dashboard</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -111,7 +111,7 @@ else{
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.html"> <i class="icon-plus"></i> </a></span>
+					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
 						<h5>Products</h5>
 					</div>
 					<div class="widget-content nopadding">

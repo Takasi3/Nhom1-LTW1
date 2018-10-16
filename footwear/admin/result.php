@@ -32,7 +32,7 @@
 
 <!--Header-part-->
 <div id="header">
-	<h1><a href="dashboard.html">Dashboard</a></h1>
+	<h1><a href="dashboard.php">Dashboard</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -45,7 +45,7 @@
 				<li class="divider"></li>
 				<li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
 				<li class="divider"></li>
-				<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+				<li><a href="login.php"><i class="icon-key"></i> Log Out</a></li>
 			</ul>
 		</li>
 		<li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
@@ -60,7 +60,7 @@
 			</ul>
 		</li>
 		<li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
-		<li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+		<li class=""><a title="" href="login.php"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
 	</ul>
 </div>
 
@@ -79,9 +79,11 @@
 	<ul>
 		<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 
-		<li> <a href="form.html"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
+		<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Add New Product</span></a></li>
 		<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Manufactures</span></a></li>
 		<li> <a href="protype.php"><i class="icon icon-th-list"></i> <span>Protypes</span></a></li>
+		<li> <a href="form_manufacture.php"><i class="icon icon-th-list"></i> <span>Add New Manufactures</span></a></li>
+		<li> <a href="form_protype.php"><i class="icon icon-th-list"></i> <span>Add New Protypes</span></a></li>
 
 
 
@@ -98,7 +100,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.html"> <i class="icon-plus"></i> </a></span>
+					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
 						<h5>Products</h5>
 					</div>
 					<div class="widget-content nopadding">
@@ -149,7 +151,7 @@
 								<td><?php echo $value['description'] ?></td>
 								<td><?php echo $value['price'] ?></td>
 								<td>
-									<a href="form.html" class="btn btn-success btn-mini">Edit</a>
+									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
 									<a href="del.php?id=<?php echo $value['ID'] ?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
