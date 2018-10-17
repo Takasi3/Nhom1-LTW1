@@ -145,7 +145,7 @@ foreach ($getManuProducts as $value) {
 										<div class="control-group">
 											<label class="control-label">Price :</label>
 											<div class="controls">
-												<input type="text" class="span11" placeholder="price" name =Pri "price" /> *
+												<input type="number" class="span11" placeholder="price" name =Pri "price" /> *
 											</div>
 
 										</div>

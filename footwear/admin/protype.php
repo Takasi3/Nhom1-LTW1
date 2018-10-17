@@ -113,7 +113,6 @@
 								<td><?php echo $value['type_name'] ?></td>
 									<td><img src='public\images\protypes\<?php echo $value['type_img'] ?>'style="width:100px"> </td>
 								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
 									<a href="del.php?typeid=<?php echo $value['type_ID'] ?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>

@@ -161,7 +161,7 @@ foreach ($getManuProducts as $value) {
 												<div class="control-group">
 													<label class="control-label">Price :</label>
 													<div class="controls">
-														<input type="text" class="span11" placeholder="price" name =Pri "price" value="<?php echo $getProductsByID['0']['price']; ?>" /> *
+														<input type="number" class="span11" placeholder="price" name =Pri "price" value="<?php echo $getProductsByID['0']['price']; ?>" /> *
 													</div>
 
 												</div>

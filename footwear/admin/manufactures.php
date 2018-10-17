@@ -113,7 +113,6 @@
 								<td><?php echo $value['manu_name'] ?></td>
 									<td><img src='public\images\manufactures\<?php echo $value['manu_img'] ?>'style="width:100px"> </td>
 								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
 									<a href="del.php?manuid=<?php echo $value['manu_ID'] ?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
